@@ -1,0 +1,11 @@
+<header></header>
+<div class="main-div">
+    <side-bar (componentSelected)="setActiveComponent($event)"></side-bar>
+    <create-template *ngIf="activeComponent === 'create'"></create-template>
+    <list-template *ngIf="activeComponent === 'list'"></list-template>
+    <export-report *ngIf="activeComponent === 'export'"></export-report>
+</div>
+
+
+
+

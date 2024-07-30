@@ -1,0 +1,61 @@
+<div class="list-template-box">
+  <div class="heading">List Template</div>
+  <div style="height: 400px; overflow-y: scroll;margin-top: 20px;">
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" class="header-checkbox btn" (change)="toggleAllCheckboxes($event)"></th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Report Group</th>
+          <th>Additional Info</th>
+          <th>Parameters</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let item of data; let i = index">
+          <td><input type="checkbox" [(ngModel)]="item.selected" class="btn"></td>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.report_group }}</td>
+          <td>{{ item.additionalInfo }}</td>
+          <td>
+            <span (click)="toggleParameterDetails(i)" class="button">{{ getShortParameters(item.parameters) }}</span>
+            <div *ngIf="isParameterDetailsVisible(i)" class="parameter-details">
+              <button (click)="toggleParameterDetails(i)" style="background-color: #36454F; border: none; margin-left: 95%;">
+                <img class="cancel-img" src="../../../assets/images/cancel.png">
+              </button>
+              <div *ngFor="let param of item.parameters">{{ param }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="action-btn" (click)="editSelected()">Edit</button>
+  <button class="action-btn" (click)="deleteSelected()">Delete</button>
+
+  <div *ngIf="isEditVisible" class="edit-template-box">
+    <h3>Edit Template</h3>
+    <form (ngSubmit)="saveEdit()">
+      <div class="flex">
+        <label>Name: </label>
+        <input type="text" [(ngModel)]="selectedTemplate.name" name="name" required>
+      </div>
+      <div class="flex">
+        <label>Report Group: </label>
+        <input type="text" [(ngModel)]="selectedTemplate.report_group" name="report_group" required>
+      </div>
+      <div class="flex">
+        <label>Additional Info: </label>
+        <input type="text" [(ngModel)]="selectedTemplate.additionalInfo" name="additionalInfo" required>
+      </div>
+      <div class="flex">
+        <label>Parameters: </label>
+        <input type="text" [(ngModel)]="selectedTemplate.parameters" name="parameters" required>
+      </div>
+      <button type="button" (click)="cancelEdit()" class="action-btn m-l">Cancel</button>
+      <button type="submit" class="action-btn m-l">Save</button>
+    </form>
+  </div>
+</div>

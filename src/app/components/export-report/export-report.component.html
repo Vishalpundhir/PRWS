@@ -1,0 +1,34 @@
+<div class="export-report-box">
+    <div class="heading">
+        Export Report
+    </div>
+    <div class="options">
+        <div class="dropdown-container">
+            <select id="info-select" class="dropdown" class="options-item options-item-select">
+                <option value="" disabled selected>Select Report Name</option>
+                <option *ngFor="let report of reports" [value]="report">{{ report }}</option>
+            </select>
+        </div>
+        <div>
+            <input
+            placeholder="From Date"
+            class="textbox-n"
+            type="text"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
+            class="options-item options-item-select" />
+        </div>
+        <div>
+            <input
+            placeholder="To Date"
+            class="textbox-n"
+            type="text"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
+            class="options-item options-item-select" />
+        </div>
+    </div>
+    <button class="submit-btn"> Submit </button>
+
+    
+</div>

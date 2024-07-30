@@ -1,0 +1,45 @@
+<div class="create-template-box">
+  <div class="heading">
+    Create Template
+  </div>
+  <div class="options">
+    <div>
+      <input type="text" placeholder="Report Name" class="options-item" [(ngModel)]="reportName">
+    </div>
+
+    <div class="dropdown-container">
+      <select id="group-select" class="dropdown options-item options-item-select" [(ngModel)]="groupName">
+        <option value="" disabled selected>Select a Group</option>
+        <option *ngFor="let group of groupNameList" [value]="group">{{ group }}</option>
+      </select>
+    </div>
+
+
+    <!-- <div class="dropdown-container">
+      <select id="parameter-select" class="dropdown options-item options-item-select" [(ngModel)]="selectedParameter">
+        <option value="" disabled selected>Select a Parameter</option>
+        <option *ngFor="let param of parameters" [value]="param"><input type="checkbox">{{ param }}</option>
+      </select>
+    </div>   -->
+    <div class="dropdown-container" (click)="toggleDropdown()">
+      <div class="dropdown options-item options-item-select">
+      Select Parameters
+      </div>
+      <div class="dropdown-content" *ngIf="isDropdownOpen" (click)="$event.stopPropagation()">
+        <div *ngFor="let param of parameters">
+          <input type="checkbox" [value]="param" (change)="onParameterChange($event)"> {{ param }}
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="dropdown-container">
+      <select id="info-select" class="dropdown options-item options-item-select" [(ngModel)]="selectedAdditionalInfo">
+        <option value="" disabled selected>Select Additional Info</option>
+        <option *ngFor="let info of additionalInfo" [value]="info"> {{ info }}</option>
+      </select>
+    </div>
+  </div>
+  <button class="submit-btn" (click)="postTemplate()">Submit</button>
+</div>

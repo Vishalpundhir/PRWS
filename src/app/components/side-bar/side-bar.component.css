@@ -1,0 +1,26 @@
+.side-bar{
+    margin-top: 6%;
+    width: 10%;
+    height: 90%;
+    background-color: #28282B;
+    position: fixed; 
+    top: 0; 
+    z-index: 1000; 
+}
+.nav-item{
+    margin-top: 38px;
+    color: white;
+    width: 80%;
+    margin-left: 13px;
+    border-radius: 5px;
+    background-color: #36454F;
+    cursor: pointer;
+    text-align: center;
+}
+.nav-item-img{
+    height: 49px;
+    margin-top: 10px;
+}
+.nav-item-title{
+    padding-bottom: 10px;
+}
